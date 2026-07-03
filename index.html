@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elektroniğin Anatomisi & Araştırmalar</title>
-    <!-- Formüllerin düzgün görünmesi için MathJax Altyapısı -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -55,7 +52,6 @@
             margin-bottom: 20px;
         }
         
-        /* Yeni Kitap Kartı Tasarımı (Flexbox ile Yan Yana) */
         .book-container {
             display: flex;
             gap: 30px;
@@ -67,19 +63,18 @@
             margin-top: 20px;
         }
         .book-image {
-            flex: 0 0 220px; /* Kapak görselinin genişliği */
+            flex: 0 0 220px;
         }
         .book-image img {
             width: 100%;
             border-radius: 4px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            /* Görsel yoksa gri bir kutu göstersin diye varsayılan arka plan: */
             background-color: #334155; 
             min-height: 300px;
             display: block;
         }
         .book-info {
-            flex: 1; /* Geri kalan alanı yazıya ayırır */
+            flex: 1;
         }
         .book-info h3 {
             margin-top: 0;
@@ -116,12 +111,38 @@
         }
         .math-block {
             background-color: #1a2436;
-            padding: 15px;
+            padding: 20px;
             border-radius: 6px;
             text-align: center;
             margin: 15px 0;
             overflow-x: auto;
+            /* Saf HTML formül için font ayarı */
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.5rem;
+            font-style: italic;
         }
+        
+        /* Saf CSS Kesir Yapısı */
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .fraction .numerator {
+            border-bottom: 1px solid var(--text-color);
+            display: block;
+            padding: 0 4px;
+        }
+        .fraction .denominator {
+            display: block;
+            padding: 0 4px;
+        }
+        .vector {
+            font-weight: bold;
+            font-style: normal;
+        }
+
         footer {
             text-align: center;
             margin-top: 80px;
@@ -129,7 +150,6 @@
             font-size: 0.9rem;
         }
 
-        /* Telefon ekranları için responsive ayar (Ekran daralınca alt alta geçer) */
         @media (max-width: 768px) {
             .book-container {
                 flex-direction: column;
@@ -152,19 +172,15 @@
         </header>
 
         <main>
-            <!-- Kitap Tanıtım Bölümü -->
             <section id="kitap">
                 <h2>Kitap Hakkında</h2>
                 <p>Bu çalışma, ezbere dayalı devre şemaları ve formül ezberleten akademik kalıpların dışına çıkarak, elektroniği tamamen temel fizik prensiplerinden ve bileşenlerin mikroskobik anatomisinden başlayarak ele alan bir mühendislik kılavuzudur.</p>
                 
                 <div class="book-container">
-                    <!-- Sol Taraf: Kitap Kapağı -->
                     <div class="book-image">
-                        <!-- 'kapak.jpg' kısmını kendi resminin adıyla değiştir -->
                         <img src="kapak.jpg" alt="Elektroniğin Anatomisi Kapak Görseli">
                     </div>
                     
-                    <!-- Sağ Taraf: Açıklama ve Buton -->
                     <div class="book-info">
                         <h3>Özet Açıklama</h3>
                         <p>Yarı iletkenlerin iç yapısındaki yük hareketlerinden, Maxwell denklemlerinin devre kartı üzerindeki gerçek izdüşümlerine kadar donanımın en derin katmanlarını inceliyoruz. Sadece "nasıl çalışır" sorusuna değil, "arkasındaki fiziksel mekanizma nedir" sorusuna odaklanan teknik bir içerik.</p>
@@ -176,21 +192,23 @@
                             <li>Tersine Mühendislik Metodolojileri ve Sinyal Takibi</li>
                         </ul>
 
-                        <!-- PDF Linki Buraya Gelecek -->
                         <a href="elektronigin_anatomisi.pdf" class="btn" download>E-Kitabı PDF Olarak İndir</a>
                     </div>
                 </div>
             </section>
 
-            <!-- Araştırmalar & Projeler Bölümü -->
             <section id="arastirmalar">
                 <h2>Güncel Araştırmalar & Laboratuvar Notları</h2>
                 <p>Donanım tasarımı, sinyal işleme mimarileri ve veri sayfası olmadan çip işlev analizi üzerine aldığım bağımsız notlar ve matematiksel modeller.</p>
                 
                 <div class="math-block">
-                    <!-- LaTeX Formül Örneği (MathJax otomatik işler) -->
-                    $$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+                    &nabla; &times; <span class="vector">E</span> = &minus; 
+                    <div class="fraction">
+                        <span class="numerator">&part;<span class="vector">B</span></span>
+                        <span class="denominator">&part;t</span>
+                    </div>
                 </div>
+                
                 <p style="font-size: 0.9rem; color: #64748b; text-align: center;">Elektromanyetik dalgaların sınır koşulları ve PCB trace analizlerinde alan teorisi uygulamaları.</p>
             </section>
         </main>
