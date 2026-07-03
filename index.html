@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektroniğin Anatomisi & Araştırmalar</title>
+    <!-- Formüllerin düzgün görünmesi için MathJax Altyapısı -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+        
+        /* Yeni Kitap Kartı Tasarımı (Flexbox ile Yan Yana) */
+        .book-container {
+            display: flex;
+            gap: 30px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .book-image {
+            flex: 0 0 220px; /* Kapak görselinin genişliği */
+        }
+        .book-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            /* Görsel yoksa gri bir kutu göstersin diye varsayılan arka plan: */
+            background-color: #334155; 
+            min-height: 300px;
+            display: block;
+        }
+        .book-info {
+            flex: 1; /* Geri kalan alanı yazıya ayırır */
+        }
+        .book-info h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        ul li:last-child {
+            border-bottom: none;
+        }
+        .math-block {
+            background-color: #1a2436;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Telefon ekranları için responsive ayar (Ekran daralınca alt alta geçer) */
+        @media (max-width: 768px) {
+            .book-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .book-image {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Elektroniğin Anatomisi</h1>
+            <div class="subtitle">Birinci Prensiplerle Donanım ve Fiziksel Modelleme Arşivi</div>
+        </header>
+
+        <main>
+            <!-- Kitap Tanıtım Bölümü -->
+            <section id="kitap">
+                <h2>Kitap Hakkında</h2>
+                <p>Bu çalışma, ezbere dayalı devre şemaları ve formül ezberleten akademik kalıpların dışına çıkarak, elektroniği tamamen temel fizik prensiplerinden ve bileşenlerin mikroskobik anatomisinden başlayarak ele alan bir mühendislik kılavuzudur.</p>
+                
+                <div class="book-container">
+                    <!-- Sol Taraf: Kitap Kapağı -->
+                    <div class="book-image">
+                        <!-- 'kapak.jpg' kısmını kendi resminin adıyla değiştir -->
+                        <img src="kapak.jpg" alt="Elektroniğin Anatomisi Kapak Görseli">
+                    </div>
+                    
+                    <!-- Sağ Taraf: Açıklama ve Buton -->
+                    <div class="book-info">
+                        <h3>Özet Açıklama</h3>
+                        <p>Yarı iletkenlerin iç yapısındaki yük hareketlerinden, Maxwell denklemlerinin devre kartı üzerindeki gerçek izdüşümlerine kadar donanımın en derin katmanlarını inceliyoruz. Sadece "nasıl çalışır" sorusuna değil, "arkasındaki fiziksel mekanizma nedir" sorusuna odaklanan teknik bir içerik.</p>
+                        
+                        <h4>Öne Çıkan Başlıklar:</h4>
+                        <ul>
+                            <li>Bileşenlerin Fiziksel Anatomisi</li>
+                            <li>Matematiksel Modelleme ve Birinci Prensipten Devre Analizleri</li>
+                            <li>Tersine Mühendislik Metodolojileri ve Sinyal Takibi</li>
+                        </ul>
+
+                        <!-- PDF Linki Buraya Gelecek -->
+                        <a href="elektronigin_anatomisi.pdf" class="btn" download>E-Kitabı PDF Olarak İndir</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Araştırmalar & Projeler Bölümü -->
+            <section id="arastirmalar">
+                <h2>Güncel Araştırmalar & Laboratuvar Notları</h2>
+                <p>Donanım tasarımı, sinyal işleme mimarileri ve veri sayfası olmadan çip işlev analizi üzerine aldığım bağımsız notlar ve matematiksel modeller.</p>
+                
+                <div class="math-block">
+                    <!-- LaTeX Formül Örneği (MathJax otomatik işler) -->
+                    $$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+                </div>
+                <p style="font-size: 0.9rem; color: #64748b; text-align: center;">Elektromanyetik dalgaların sınır koşulları ve PCB trace analizlerinde alan teorisi uygulamaları.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Elektroniğin Anatomisi. Tüm Hakları Saklıdır.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
