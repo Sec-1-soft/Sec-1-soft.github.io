@@ -3,220 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elektroniğin Anatomisi & Araştırmalar</title>
+    <title>Elektromia - Elektronik Devreler ve Notlar</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --text-color: #e2e8f0;
-            --accent-color: #38bdf8;
-            --card-bg: #1e293b;
-            --border-color: #334155;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff66;
+            --border-color: #333;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
         header {
             text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
+            padding: 40px 0;
+            border-bottom: 2px dashed var(--accent-color);
+            margin-bottom: 30px;
         }
-        h1 {
-            color: #fff;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .subtitle {
+        header h1 {
             color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: 500;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 2px;
         }
-        section {
-            margin-bottom: 50px;
+        header p {
+            color: #888;
+            margin-top: 10px;
         }
-        h2 {
-            color: #fff;
-            font-size: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 12px;
-            margin-bottom: 20px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        
-        .book-container {
-            display: flex;
-            gap: 30px;
+        .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
-            align-items: flex-start;
-            margin-top: 20px;
-        }
-        .book-image {
-            flex: 0 0 220px;
-        }
-        .book-image img {
-            width: 100%;
             border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            background-color: #334155; 
-            min-height: 300px;
-            display: block;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
         }
-        .book-info {
-            flex: 1;
+        .card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
         }
-        .book-info h3 {
+        .card h3 {
             margin-top: 0;
-            color: #fff;
+            color: var(--accent-color);
             font-size: 1.3rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
         }
-
-        .btn {
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+        .tag {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: #0f172a;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.2s;
-            margin-top: 20px;
+            background-color: #2a2a2a;
+            color: var(--accent-color);
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            margin-top: 10px;
+            border: 1px solid #444;
         }
-        .btn:hover {
-            opacity: 0.9;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            padding: 8px 0;
-            border-bottom: 1px dashed var(--border-color);
-        }
-        ul li:last-child {
-            border-bottom: none;
-        }
-        .math-block {
-            background-color: #1a2436;
-            padding: 20px;
-            border-radius: 6px;
-            text-align: center;
-            margin: 15px 0;
-            overflow-x: auto;
-            /* Saf HTML formül için font ayarı */
-            font-family: "Times New Roman", Times, serif;
-            font-size: 1.5rem;
-            font-style: italic;
-        }
-        
-        /* Saf CSS Kesir Yapısı */
-        .fraction {
-            display: inline-block;
-            vertical-align: middle;
-            text-align: center;
-            font-size: 0.9em;
-        }
-        .fraction .numerator {
-            border-bottom: 1px solid var(--text-color);
-            display: block;
-            padding: 0 4px;
-        }
-        .fraction .denominator {
-            display: block;
-            padding: 0 4px;
-        }
-        .vector {
-            font-weight: bold;
-            font-style: normal;
-        }
-
         footer {
             text-align: center;
-            margin-top: 80px;
-            color: #64748b;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
             font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .book-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .book-image {
-                flex: 0 0 auto;
-                width: 100%;
-                max-width: 250px;
-            }
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
+    <header>
+        <h1>Elektromia</h1>
+        <p>// Analog Devreler, Hesaplamalar ve Donanım Notları</p>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>Elektroniğin Anatomisi</h1>
-            <div class="subtitle">Birinci Prensiplerle Donanım ve Fiziksel Modelleme Arşivi</div>
-        </header>
+        <!-- Kart 1 -->
+        <div class="card">
+            <h3>Astable Multivibrator</h3>
+            <p>BJT transistörler kullanılarak tasarlanmış kare dalga üreteci devresi. Osiloskop testleri ve saat sinyali üretimi için temel yapı taşı.</p>
+            <span class="tag">Transistör / Osilatör</span>
+        </div>
 
-        <main>
-            <section id="kitap">
-                <h2>Kitap Hakkında</h2>
-                <p>Bu çalışma, ezbere dayalı devre şemaları ve formül ezberleten akademik kalıpların dışına çıkarak, elektroniği tamamen temel fizik prensiplerinden ve bileşenlerin mikroskobik anatomisinden başlayarak ele alan bir mühendislik kılavuzudur.</p>
-                
-                <div class="book-container">
-                    <div class="book-image">
-                        <img src="kapak.jpg" alt="Elektroniğin Anatomisi Kapak Görseli">
-                    </div>
-                    
-                    <div class="book-info">
-                        <h3>Özet Açıklama</h3>
-                        <p>Yarı iletkenlerin iç yapısındaki yük hareketlerinden, Maxwell denklemlerinin devre kartı üzerindeki gerçek izdüşümlerine kadar donanımın en derin katmanlarını inceliyoruz. Sadece "nasıl çalışır" sorusuna değil, "arkasındaki fiziksel mekanizma nedir" sorusuna odaklanan teknik bir içerik.</p>
-                        
-                        <h4>Öne Çıkan Başlıklar:</h4>
-                        <ul>
-                            <li>Bileşenlerin Fiziksel Anatomisi</li>
-                            <li>Matematiksel Modelleme ve Birinci Prensipten Devre Analizleri</li>
-                            <li>Tersine Mühendislik Metodolojileri ve Sinyal Takibi</li>
-                        </ul>
+        <!-- Kart 2 -->
+        <div class="card">
+            <h3>BJT Ses Preamfisi</h3>
+            <p>Düşük seviyeli mikrofon sinyallerini yükseltmek için tasarlanmış ortak emiterli (Common Emitter) analog amplifikatör kademesi.</p>
+            <span class="tag">Amplifikatör / Analog</span>
+        </div>
 
-                        <a href="Geometrik-Seri-ve-Top.pdf" class="btn" download>E-Kitabı PDF Olarak İndir</a>
-                    </div>
-                </div>
-            </section>
+        <!-- Kart 3 -->
+        <div class="card">
+            <h3>Batarya Koruma ve Kesme</h3>
+            <p>Zener diyot referanslı ve diferansiyel çift yapılı gerilim eşik algılama devresi. Kritik voltaj seviyelerinde çıkışı otomatik keser.</p>
+            <span class="tag">Güç Elektroniği</span>
+        </div>
 
-            <section id="arastirmalar">
-                <h2>Güncel Araştırmalar & Laboratuvar Notları</h2>
-                <p>Donanım tasarımı, sinyal işleme mimarileri ve veri sayfası olmadan çip işlev analizi üzerine aldığım bağımsız notlar ve matematiksel modeller.</p>
-                
-                <div class="math-block">
-                    &nabla; &times; <span class="vector">E</span> = &minus; 
-                    <div class="fraction">
-                        <span class="numerator">&part;<span class="vector">B</span></span>
-                        <span class="denominator">&part;t</span>
-                    </div>
-                </div>
-                
-                <p style="font-size: 0.9rem; color: #64748b; text-align: center;">Elektromanyetik dalgaların sınır koşulları ve PCB trace analizlerinde alan teorisi uygulamaları.</p>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Elektroniğin Anatomisi. Tüm Hakları Saklıdır.</p>
-        </footer>
+        <!-- Kart 4 -->
+        <div class="card">
+            <h3>Boost Konverter Modülü</h3>
+            <p>Endüktif anahtarlama yoluyla düşük giriş gerilimlerini daha yüksek DC seviyelere çıkaran verimli güç dönüştürücü topolojisi.</p>
+            <span class="tag">Anahtarlamalı Güç</span>
+        </div>
     </div>
 
-</body>
+    <footer>
+        <p>Elektromia © 2026 | GitHub Pages Üzerinden Yayında</p>
+    </body>
 </html>
